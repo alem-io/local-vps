@@ -4,6 +4,14 @@
 
 VPS сервер запускается по указанному порту и принимает ssh подключение.
 
+### Сборка
+
+Для сборки образа:
+
+```bash
+./build.sh
+```
+
 ### Запуск
 
 Для запуска локального сервера:
@@ -12,7 +20,6 @@ VPS сервер запускается по указанному порту и 
 PORT=22 && docker run -d --rm \
     --name local-vps-$PORT \
     -p $PORT:$PORT \
-    -v /var/run/docker.sock:/var/run/docker.sock \
     atlekbai/local-vps $PORT
 ```
 
