@@ -1,7 +1,12 @@
 FROM ubuntu:18.04
 
-RUN apt update
-RUN apt install -y curl git openssh-server sudo
+RUN apt-get update
+RUN apt-get install -y \
+    curl \
+    git \
+    openssh-server \
+    sudo \
+    nano
 
 # setup credentials for root user
 RUN echo 'root:password' | chpasswd

@@ -9,11 +9,11 @@ URL_ARCHIVE="https://github.com/gdraheim/docker-systemctl-replacement/archive/re
 ARCHIVE_NAME="$SYSTEMCTL_NAME.zip"
 UNPACKED_DIRECTORY="$SYSTEMCTL_NAME-$VERSION"
 
-curl -sL -o $ARCHIVE_NAME $URL_ARCHIVE
-unzip $ARCHIVE_NAME > /dev/null
+[ -f "$ARCHIVE_NAME" ] || curl -sL -o $ARCHIVE_NAME $URL_ARCHIVE
+[ -d "$UNPACKED_DIRECTORY" ] || unzip $ARCHIVE_NAME > /dev/null
 
-mv "$UNPACKED_DIRECTORY/files/docker/journalctl3.py" journalctl.py
-mv "$UNPACKED_DIRECTORY/files/docker/systemctl3.py" systemctl.py
+[ -f "journalctl.py" ] || mv "$UNPACKED_DIRECTORY/files/docker/journalctl3.py" journalctl.py
+[ -f "systemctl.py" ] || mv "$UNPACKED_DIRECTORY/files/docker/systemctl3.py" systemctl.py
 
 docker build -t $IMAGE_NAME --platform=linux/amd64 .
 
