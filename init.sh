@@ -6,4 +6,6 @@ DEFAULT_PORT=22
 
 echo $DEFAULT_PORT
 
+[ -f /root/.ssh/authorized_keys ] && chown root:root -R /root/.ssh/
+
 /usr/sbin/sshd -D -p $DEFAULT_PORT
